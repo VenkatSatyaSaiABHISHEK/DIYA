@@ -102,7 +102,7 @@ export const GrainOrb = ({
   const reduced = useReducedMotion();
   const webgl = useWebGLSupport();
   const [contextLost, setContextLost] = useState(false);
-  const showShader = webgl === true && size >= 32 && !contextLost;
+  const showShader = webgl === true && size >= 16 && !contextLost;
 
   useEffect(() => {
     const el = sphereRef.current;
