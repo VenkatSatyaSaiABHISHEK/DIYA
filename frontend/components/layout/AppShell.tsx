@@ -21,20 +21,26 @@ export interface AppShellProps {
 export const AppShell: React.FC<AppShellProps> = ({ children }) => {
   const pathname = usePathname();
   const { searchOpen, setSearchOpen } = useUIStore();
-  const isHome = pathname === '/';
+  const isHome = pathname === '/' || pathname === '/home' || pathname === '/overview';
+
+  React.useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] dark:bg-[#000000] text-[#111111] dark:text-[#EDEDED] transition-colors selection:bg-[#EDE9FE] selection:text-[#6D28D9]">
+    <div className="min-h-screen bg-[#FAFAFA] text-[#111111] transition-colors selection:bg-[#EDE9FE] selection:text-[#6D28D9]">
       {/* Vercel-Style Top Navigation Bar (Logo, Workspace Switcher, Tabs with Purple Underline) */}
       <VercelNavbar />
 
-      {/* Centered Main Content Area */}
+      {/* Centered Main Content Area with Mobile Safe Bottom Padding */}
       <main
         className={cn(
           'w-full max-w-[1720px] mx-auto',
           isHome
-            ? 'px-3 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:h-[calc(100dvh-86px)] lg:max-h-[calc(100dvh-86px)] lg:overflow-hidden flex flex-col'
-            : 'px-4 sm:px-6 lg:px-8 xl:px-10 py-6 sm:py-8 pb-16'
+            ? 'px-3 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:h-[calc(100dvh-86px)] lg:max-h-[calc(100dvh-86px)] lg:overflow-hidden flex flex-col pb-24 md:pb-3'
+            : 'px-3.5 sm:px-6 lg:px-8 xl:px-10 py-4 sm:py-6 pb-24 md:pb-16'
         )}
       >
         {children}

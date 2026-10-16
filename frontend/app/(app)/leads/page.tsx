@@ -67,19 +67,20 @@ export default function LeadsPage() {
       </div>
 
       {/* 2. Simple Summary Row (3-4 numbers) */}
+      {/* 2. Simple Summary Row (3-4 numbers) */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div className="p-4 rounded-lg bg-white dark:bg-[#0A0A0A] border border-[#EAEAEA] dark:border-[#333] shadow-xs">
-          <span className="text-[11px] font-semibold text-[#888] uppercase tracking-wider block">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-[#EAEAEA] shadow-xs">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-[#888] uppercase tracking-wider block">
             Total Captured
           </span>
-          <span className="text-xl font-bold text-[#111] dark:text-[#EDEDED] mt-1 block">
+          <span className="text-xl font-bold text-[#111] mt-1 block">
             {summary.total}
           </span>
-          <span className="text-[10px] text-[#888]">Across Meta & Google Ads</span>
+          <span className="text-[10px] text-[#888]">Across Meta &amp; Google Ads</span>
         </div>
 
-        <div className="p-4 rounded-lg bg-white dark:bg-[#0A0A0A] border border-[#EAEAEA] dark:border-[#333] shadow-xs">
-          <span className="text-[11px] font-semibold text-[#888] uppercase tracking-wider block">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-[#EAEAEA] shadow-xs">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-[#888] uppercase tracking-wider block">
             AI Qualified VIPs
           </span>
           <span className="text-xl font-bold text-[#7C3AED] mt-1 block">
@@ -88,21 +89,21 @@ export default function LeadsPage() {
           <span className="text-[10px] text-emerald-600 font-medium">Ready for site visit</span>
         </div>
 
-        <div className="p-4 rounded-lg bg-white dark:bg-[#0A0A0A] border border-[#EAEAEA] dark:border-[#333] shadow-xs">
-          <span className="text-[11px] font-semibold text-[#888] uppercase tracking-wider block">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-[#EAEAEA] shadow-xs">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-[#888] uppercase tracking-wider block">
             Converted Deals
           </span>
-          <span className="text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-1 block">
+          <span className="text-xl font-bold text-emerald-600 mt-1 block">
             {summary.converted}
           </span>
           <span className="text-[10px] text-[#888]">Direct conversion</span>
         </div>
 
-        <div className="p-4 rounded-lg bg-white dark:bg-[#0A0A0A] border border-[#EAEAEA] dark:border-[#333] shadow-xs">
-          <span className="text-[11px] font-semibold text-[#888] uppercase tracking-wider block">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-[#EAEAEA] shadow-xs">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-[#888] uppercase tracking-wider block">
             Pipeline Value
           </span>
-          <span className="text-xl font-bold text-[#111] dark:text-[#EDEDED] mt-1 block">
+          <span className="text-xl font-bold text-[#111] mt-1 block">
             ₹18.4 Cr
           </span>
           <span className="text-[10px] text-[#888]">Attributed inventory</span>
@@ -112,7 +113,7 @@ export default function LeadsPage() {
       {/* 3. Main Content: Table View (Click opens Sheet) */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-bold text-[#111] dark:text-[#EDEDED] uppercase tracking-wider">
+          <span className="text-xs font-bold text-[#111] uppercase tracking-wider">
             All Inbound Prospects ({leads.length})
           </span>
           <button

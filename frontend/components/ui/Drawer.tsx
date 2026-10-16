@@ -56,37 +56,37 @@ export const Drawer: React.FC<DrawerProps> = ({
       <div
         className={cn(
           'fixed inset-y-0 flex max-w-full z-10',
-          side === 'right' ? 'right-0 pl-10' : 'left-0 pr-10'
+          side === 'right' ? 'right-0 pl-0 sm:pl-10' : 'left-0 pr-0 sm:pr-10'
         )}
       >
         <div
           className={cn(
-            'w-screen bg-white dark:bg-[#0A0A0A] border-l border-[#EAEAEA] dark:border-[#333] flex flex-col h-full shadow-2xl animate-in duration-300 ease-out text-[#111] dark:text-[#EDEDED]',
+            'w-screen bg-white border-l border-[#EAEAEA] flex flex-col h-full shadow-2xl animate-in duration-300 ease-out text-[#111]',
             side === 'right' ? 'slide-in-from-right' : 'slide-in-from-left',
             width
           )}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-4.5 border-b border-[#EAEAEA] dark:border-[#333]">
+          <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-[#EAEAEA]">
             <div>
               {typeof title === 'string' ? (
-                <h3 className="text-base font-semibold text-[#111] dark:text-[#EDEDED]">{title}</h3>
+                <h3 className="text-base font-semibold text-[#111]">{title}</h3>
               ) : (
                 title
               )}
-              {subtitle && <p className="text-xs text-[#666] dark:text-[#888] mt-0.5">{subtitle}</p>}
+              {subtitle && <p className="text-xs text-[#666] mt-0.5">{subtitle}</p>}
             </div>
             <button
               onClick={onClose}
               aria-label="Close drawer"
-              className="rounded-lg p-1.5 text-[#666] dark:text-[#888] hover:text-[#111] dark:hover:text-[#EDEDED] hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+              className="rounded-lg p-2 text-[#666] hover:text-[#111] hover:bg-black/5 active:scale-95 transition-all"
             >
-              <X className="h-4 w-4" />
+              <X className="h-4.5 w-4.5" />
             </button>
           </div>
 
           {/* Body */}
-          <div className="flex-1 overflow-y-auto px-6 py-5">{children}</div>
+          <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-5">{children}</div>
         </div>
       </div>
     </div>

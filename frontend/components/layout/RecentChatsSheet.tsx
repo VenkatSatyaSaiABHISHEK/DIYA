@@ -34,13 +34,13 @@ export const RecentChatsSheet: React.FC = () => {
 
   return (
     <Sheet open={recentChatsOpen} onOpenChange={setRecentChatsOpen}>
-      <SheetContent side="right" className="w-[360px] p-5 flex flex-col justify-between">
+      <SheetContent side="right" className="w-full max-w-[360px] p-5 flex flex-col justify-between bg-white border-l border-[#EAEAEA]">
         <div className="space-y-4">
-          <SheetHeader className="text-left pb-3 border-b border-[#EAEAEA] dark:border-[#333]">
+          <SheetHeader className="text-left pb-3 border-b border-[#EAEAEA]">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <MessageSquare className="h-4 w-4 text-[#7C3AED]" />
-                <SheetTitle className="text-sm font-bold text-[#111] dark:text-[#EDEDED]">
+                <SheetTitle className="text-sm font-bold text-[#111]">
                   Recent DIYA Sessions
                 </SheetTitle>
               </div>
@@ -62,10 +62,10 @@ export const RecentChatsSheet: React.FC = () => {
               <button
                 key={c.id}
                 onClick={() => handleLoadRecentChat(c.id)}
-                className="w-full text-left p-3 rounded-lg border border-transparent hover:border-[#EAEAEA] hover:bg-[#FAFAFA] dark:hover:border-[#333] dark:hover:bg-[#141414] transition-all group"
+                className="w-full text-left p-3 rounded-lg border border-transparent hover:border-[#EAEAEA] hover:bg-[#FAFAFA] transition-all group"
               >
                 <div className="flex items-start justify-between gap-2">
-                  <p className="text-xs font-medium text-[#111] dark:text-[#EDEDED] line-clamp-2 group-hover:text-[#7C3AED] transition-colors">
+                  <p className="text-xs font-medium text-[#111] line-clamp-2 group-hover:text-[#7C3AED] transition-colors">
                     {c.title}
                   </p>
                 </div>
@@ -81,7 +81,7 @@ export const RecentChatsSheet: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-3 border-t border-[#EAEAEA] dark:border-[#333] text-[11px] text-[#888] flex items-center justify-between">
+        <div className="pt-3 border-t border-[#EAEAEA] text-[11px] text-[#888] flex items-center justify-between">
           <span className="flex items-center gap-1">
             <Sparkles className="h-3 w-3 text-[#7C3AED]" /> DIYA 2.4 Autonomous
           </span>

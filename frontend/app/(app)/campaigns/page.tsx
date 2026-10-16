@@ -86,45 +86,45 @@ export default function CampaignsPage() {
       </div>
 
       {/* 2. Simple Summary Row (Max 3-4 numbers, small) */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-5 rounded-[20px] bg-white dark:bg-[#0E0E10] border border-[#EAEAEA] dark:border-[#262626] shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
-          <span className="text-[11px] font-semibold text-[#71717A] dark:text-[#888] uppercase tracking-wider block">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="p-3.5 sm:p-5 rounded-[20px] bg-white border border-[#EAEAEA] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-[#71717A] uppercase tracking-wider block">
             Active Campaigns
           </span>
-          <span className="text-2xl font-bold text-[#18181B] dark:text-[#EDEDED] mt-1.5 block">
+          <span className="text-xl sm:text-2xl font-bold text-[#18181B] mt-1 sm:mt-1.5 block">
             {counts.live}
           </span>
-          <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold mt-0.5 block">100% on schedule</span>
+          <span className="text-[10px] sm:text-[11px] text-emerald-600 font-semibold mt-0.5 block">100% on schedule</span>
         </div>
 
-        <div className="p-5 rounded-[20px] bg-white dark:bg-[#0E0E10] border border-[#EAEAEA] dark:border-[#262626] shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
-          <span className="text-[11px] font-semibold text-[#71717A] dark:text-[#888] uppercase tracking-wider block">
+        <div className="p-3.5 sm:p-5 rounded-[20px] bg-white border border-[#EAEAEA] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-[#71717A] uppercase tracking-wider block">
             Ad Spend (Month)
           </span>
-          <span className="text-2xl font-bold text-[#18181B] dark:text-[#EDEDED] mt-1.5 block">
+          <span className="text-xl sm:text-2xl font-bold text-[#18181B] mt-1 sm:mt-1.5 block">
             {formatINR(totalSpend || 45200)}
           </span>
-          <span className="text-[11px] text-[#71717A] dark:text-[#888] mt-0.5 block">Under allocated cap</span>
+          <span className="text-[10px] sm:text-[11px] text-[#71717A] mt-0.5 block">Under allocated cap</span>
         </div>
 
-        <div className="p-5 rounded-[20px] bg-white dark:bg-[#0E0E10] border border-[#EAEAEA] dark:border-[#262626] shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
-          <span className="text-[11px] font-semibold text-[#71717A] dark:text-[#888] uppercase tracking-wider block">
+        <div className="p-3.5 sm:p-5 rounded-[20px] bg-white border border-[#EAEAEA] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-[#71717A] uppercase tracking-wider block">
             Blended ROAS
           </span>
-          <span className="text-2xl font-bold text-[#7C3AED] dark:text-[#A78BFA] mt-1.5 block">
+          <span className="text-xl sm:text-2xl font-bold text-[#7C3AED] mt-1 sm:mt-1.5 block">
             {avgRoas}x
           </span>
-          <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold mt-0.5 block">+0.8x vs industry</span>
+          <span className="text-[10px] sm:text-[11px] text-emerald-600 font-semibold mt-0.5 block">+0.8x vs industry</span>
         </div>
 
-        <div className="p-5 rounded-[20px] bg-white dark:bg-[#0E0E10] border border-[#EAEAEA] dark:border-[#262626] shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
-          <span className="text-[11px] font-semibold text-[#71717A] dark:text-[#888] uppercase tracking-wider block">
+        <div className="p-3.5 sm:p-5 rounded-[20px] bg-white border border-[#EAEAEA] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-[#71717A] uppercase tracking-wider block">
             Leads Generated
           </span>
-          <span className="text-2xl font-bold text-[#16A34A] dark:text-emerald-400 mt-1.5 block">
+          <span className="text-xl sm:text-2xl font-bold text-[#16A34A] mt-1 sm:mt-1.5 block">
             {totalLeads || 218}
           </span>
-          <span className="text-[11px] text-[#71717A] dark:text-[#888] mt-0.5 block">Avg CPL: ₹207</span>
+          <span className="text-[10px] sm:text-[11px] text-[#71717A] mt-0.5 block">Avg CPL: ₹207</span>
         </div>
       </div>
 
@@ -134,7 +134,7 @@ export default function CampaignsPage() {
           <span className="text-xs font-bold text-[#18181B] uppercase tracking-wider">
             All Ad Flights ({campaigns.length})
           </span>
-          <span className="text-xs text-[#71717A]">Click any row to inspect in side drawer</span>
+          <span className="text-xs text-[#71717A]">Tap or click to inspect details</span>
         </div>
 
         {isLoading && (
@@ -161,12 +161,31 @@ export default function CampaignsPage() {
         )}
 
         {!isLoading && campaigns.length > 0 && (
-          <CampaignTable
-            campaigns={campaigns}
-            onPause={handlePauseCampaign}
-            onApprove={handleApproveCampaign}
-            onOpenBudgetModal={openBudgetModal}
-          />
+          <>
+            {/* Desktop Table View */}
+            <div className="hidden md:block">
+              <CampaignTable
+                campaigns={campaigns}
+                onPause={handlePauseCampaign}
+                onApprove={handleApproveCampaign}
+                onOpenBudgetModal={openBudgetModal}
+              />
+            </div>
+
+            {/* Mobile Touch-Friendly Card View (Elite Mobile UI) */}
+            <div className="md:hidden space-y-3">
+              {campaigns.map((camp) => (
+                <CampaignCard
+                  key={camp.id}
+                  campaign={camp}
+                  onPause={handlePauseCampaign}
+                  onApprove={handleApproveCampaign}
+                  onOpenBudgetModal={openBudgetModal}
+                  onDismissRecommendation={dismissRecommendation}
+                />
+              ))}
+            </div>
+          </>
         )}
       </div>
 

@@ -49,12 +49,12 @@ export const AskDiyaDrawer: React.FC = () => {
           <AIOrb status={status} size="sm" />
           <div>
             <div className="flex items-center gap-1.5 leading-none">
-              <span className="font-bold text-sm text-[#111] dark:text-[#EDEDED]">Ask DIYA</span>
-              <span className="text-[10px] font-semibold text-[#7C3AED] bg-[#EDE9FE] dark:bg-[#2E1065] px-1.5 py-0.5 rounded">
+              <span className="font-bold text-sm text-[#111]">Ask DIYA</span>
+              <span className="text-[10px] font-semibold text-[#7C3AED] bg-[#EDE9FE] px-1.5 py-0.5 rounded">
                 {statusLabel}
               </span>
             </div>
-            <span className="text-[10px] text-[#666] dark:text-[#888] mt-0.5 block">
+            <span className="text-[10px] text-[#666] mt-0.5 block">
               Context: /{currentTabName}
             </span>
           </div>
@@ -64,15 +64,15 @@ export const AskDiyaDrawer: React.FC = () => {
     >
       <div className="flex flex-col h-full justify-between gap-5">
         {/* Top Action to Navigate to full tab */}
-        <div className="flex items-center justify-between p-2.5 rounded-xl bg-[#EDE9FE]/50 dark:bg-[#2E1065]/40 border border-[#DDD6FE] dark:border-[#4C1D95]/60">
-          <span className="text-xs text-[#52525B] dark:text-[#C4B5FD] font-medium">
+        <div className="flex items-center justify-between p-2.5 rounded-xl bg-[#EDE9FE]/50 border border-[#DDD6FE]">
+          <span className="text-xs text-[#52525B] font-medium">
             Full workspace available on DIYA chat
           </span>
           <Button
             size="sm"
             variant="outline"
             onClick={handleOpenInDiya}
-            className="text-xs h-7 px-2.5 bg-white dark:bg-[#141414] text-[#7C3AED] dark:text-[#A78BFA] border-[#DDD6FE] dark:border-[#4C1D95] hover:bg-[#EDE9FE] dark:hover:bg-[#2E1065]"
+            className="text-xs h-7 px-2.5 bg-white text-[#7C3AED] border-[#DDD6FE] hover:bg-[#EDE9FE]"
             rightIcon={<ExternalLink className="h-3 w-3" />}
           >
             Open in DIYA
@@ -86,11 +86,11 @@ export const AskDiyaDrawer: React.FC = () => {
               key={msg.id}
               className={`p-3 rounded-xl text-xs leading-relaxed ${
                 msg.role === 'user'
-                  ? 'bg-[#EDE9FE] dark:bg-[#2E1065] text-[#4C1D95] dark:text-[#DDD6FE] font-medium ml-6'
-                  : 'bg-white dark:bg-[#141414] border border-[#EAEAEA] dark:border-[#333] text-[#111] dark:text-[#EDEDED] mr-6 shadow-2xs'
+                  ? 'bg-[#EDE9FE] text-[#4C1D95] font-medium ml-4 sm:ml-6'
+                  : 'bg-white border border-[#EAEAEA] text-[#111] mr-4 sm:mr-6 shadow-2xs'
               }`}
             >
-              <span className="text-[10px] font-bold block mb-1 text-[#666] dark:text-[#888] uppercase tracking-wider">
+              <span className="text-[10px] font-bold block mb-1 text-[#666] uppercase tracking-wider">
                 {msg.role === 'user' ? 'You' : 'DIYA'}
               </span>
               <p className="line-clamp-4">
@@ -104,7 +104,7 @@ export const AskDiyaDrawer: React.FC = () => {
 
         {/* Suggested Chips */}
         <div>
-          <span className="text-[10px] font-semibold text-[#666] dark:text-[#888] uppercase tracking-wider block mb-1.5">
+          <span className="text-[10px] font-semibold text-[#666] uppercase tracking-wider block mb-1.5">
             Suggested Prompts
           </span>
           <div className="flex flex-col gap-1.5">
@@ -113,9 +113,9 @@ export const AskDiyaDrawer: React.FC = () => {
                 key={idx}
                 type="button"
                 onClick={() => setPrompt(s)}
-                className="text-left text-xs p-2 rounded-lg bg-white dark:bg-[#141414] border border-[#EAEAEA] dark:border-[#333] hover:border-[#7C3AED]/40 hover:bg-[#FAFAFA] dark:hover:bg-[#1C1C1C] text-[#555] dark:text-[#AAA] transition-colors flex items-center gap-1.5"
+                className="text-left text-xs p-2.5 rounded-xl bg-white border border-[#EAEAEA] hover:border-[#7C3AED]/40 hover:bg-[#FAFAFC] text-[#555] transition-colors flex items-center gap-2 active:scale-[0.99]"
               >
-                <Sparkles className="h-3 w-3 text-[#7C3AED] shrink-0" />
+                <Sparkles className="h-3.5 w-3.5 text-[#7C3AED] shrink-0" />
                 <span className="truncate">{s}</span>
               </button>
             ))}
@@ -123,14 +123,14 @@ export const AskDiyaDrawer: React.FC = () => {
         </div>
 
         {/* Input box */}
-        <form onSubmit={handleSubmit} className="mt-auto pt-2 border-t border-[#EAEAEA] dark:border-[#333]">
+        <form onSubmit={handleSubmit} className="mt-auto pt-2 border-t border-[#EAEAEA]">
           <div className="relative flex items-center">
             <textarea
               rows={2}
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="Ask DIYA to optimize ads, write copy, or plan campaigns..."
-              className="w-full resize-none rounded-xl border border-[#EAEAEA] dark:border-[#333] bg-white dark:bg-[#141414] p-2.5 pr-12 text-xs text-[#111] dark:text-[#EDEDED] placeholder:text-[#888] focus:border-[#7C3AED] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 shadow-xs"
+              className="w-full resize-none rounded-xl border border-[#EAEAEA] bg-white p-2.5 pr-12 text-xs text-[#111] placeholder:text-[#888] focus:border-[#7C3AED] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 shadow-xs"
             />
             {isStreaming ? (
               <button
@@ -146,14 +146,14 @@ export const AskDiyaDrawer: React.FC = () => {
                 type="submit"
                 disabled={!prompt.trim()}
                 aria-label="Send prompt"
-                className="absolute bottom-2.5 right-2.5 p-1.5 rounded-lg bg-[#7C3AED] text-white disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#6D28D9] transition-colors"
+                className="absolute bottom-2.5 right-2.5 p-1.5 rounded-lg bg-[#7C3AED] text-white disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#6D28D9] transition-colors shadow-2xs"
               >
                 <ArrowUp className="h-4 w-4" />
               </button>
             )}
           </div>
           <p className="text-[10px] text-[#888] text-center mt-1.5">
-            Enter sends command • Shift+Enter for new line
+            Tap send or press Enter
           </p>
         </form>
       </div>

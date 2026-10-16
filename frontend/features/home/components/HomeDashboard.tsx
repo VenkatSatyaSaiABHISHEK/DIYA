@@ -75,17 +75,17 @@ export const HomeDashboard: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full flex-1 flex flex-col gap-3 lg:gap-3.5 lg:grid lg:grid-rows-[auto_auto_1fr] overflow-hidden select-none"
+      className="w-full flex-1 flex flex-col gap-3.5 lg:gap-3.5 lg:grid lg:grid-rows-[auto_auto_1fr] overflow-y-auto lg:overflow-hidden select-none"
     >
       {/* Row 1: Hero (auto, max 170px) */}
-      <section aria-label="Executive Overview" className="h-[155px] lg:h-[162px] max-h-[170px] shrink-0">
+      <section aria-label="Executive Overview" className="h-auto min-h-[155px] lg:h-[162px] lg:max-h-[170px] shrink-0">
         <HomeHero metrics={metrics} userName="Abhishek" />
       </section>
 
       {/* Row 2: Metric Row (auto, about 110-120px) OR Setup Checklist */}
-      <section aria-label="Key Performance Indicators" className="h-[114px] lg:h-[118px] shrink-0">
+      <section aria-label="Key Performance Indicators" className="h-auto lg:h-[118px] shrink-0">
         {isConnected && m ? (
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-3.5 h-full">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 lg:gap-3.5 h-full">
             <MetricTile
               title="Total Ad Spend"
               value={m.totalAdSpend.value}
@@ -128,13 +128,13 @@ export const HomeDashboard: React.FC = () => {
         )}
       </section>
 
-      {/* Row 3: Bottom Row — Three Equal Panels (1fr, equal height, no inner scroll) */}
+      {/* Row 3: Bottom Row — Three Equal Panels (1fr on desktop, stacked on mobile) */}
       <section
         aria-label="Core Operations"
-        className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-3.5 flex-1 min-h-0 h-full overflow-hidden"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-3.5 lg:gap-3.5 flex-1 min-h-0 h-auto lg:h-full pb-4 lg:pb-0"
       >
         {/* Panel 1: Needs approval (horizontal Embla slider, Sheet for details) */}
-        <div className="h-full min-h-0 overflow-hidden">
+        <div className="h-[250px] sm:h-[270px] lg:h-full min-h-0 overflow-hidden">
           <ApprovalCarousel
             items={intelligence}
             loading={loading}
@@ -144,7 +144,7 @@ export const HomeDashboard: React.FC = () => {
         </div>
 
         {/* Panel 2: Performance (small area chart, Leads by default, 7D/30D/90D toggle) */}
-        <div className="h-full min-h-0 overflow-hidden">
+        <div className="h-[250px] sm:h-[270px] lg:h-full min-h-0 overflow-hidden">
           <PerformanceChart
             data={performance}
             loading={loading}
@@ -154,7 +154,7 @@ export const HomeDashboard: React.FC = () => {
         </div>
 
         {/* Panel 3: DIYA activity (3 items, one line each with time) */}
-        <div className="h-full min-h-0 overflow-hidden">
+        <div className="h-[250px] sm:h-[270px] lg:h-full min-h-0 overflow-hidden">
           <ActivityList
             activities={activities}
             loading={loading}

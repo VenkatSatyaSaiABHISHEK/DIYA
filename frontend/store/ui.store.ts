@@ -9,7 +9,7 @@ export interface ToastMessage {
 }
 
 export interface UIState {
-  theme: 'light' | 'dark';
+  theme: 'light';
   recentChatsOpen: boolean;
   mobileNavOpen: boolean;
   searchOpen: boolean;
@@ -18,7 +18,7 @@ export interface UIState {
   notificationsCount: number;
   toasts: ToastMessage[];
 
-  setTheme: (theme: 'light' | 'dark') => void;
+  setTheme: (theme?: 'light') => void;
   toggleTheme: () => void;
   setRecentChatsOpen: (open: boolean) => void;
   setMobileNavOpen: (open: boolean) => void;
@@ -40,29 +40,18 @@ export const useUIStore = create<UIState>((set) => ({
   notificationsCount: 3,
   toasts: [],
 
-  setTheme: (theme: 'light' | 'dark') => {
+  setTheme: () => {
     if (typeof document !== 'undefined') {
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+      document.documentElement.classList.remove('dark');
     }
-    set({ theme });
+    set({ theme: 'light' });
   },
 
   toggleTheme: () => {
-    set((state) => {
-      const nextTheme = state.theme === 'light' ? 'dark' : 'light';
-      if (typeof document !== 'undefined') {
-        if (nextTheme === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      }
-      return { theme: nextTheme };
-    });
+    if (typeof document !== 'undefined') {
+      document.documentElement.classList.remove('dark');
+    }
+    set({ theme: 'light' });
   },
 
   setRecentChatsOpen: (open: boolean) => set({ recentChatsOpen: open }),
